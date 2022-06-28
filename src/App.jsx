@@ -4,6 +4,8 @@ import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import { Booking } from "./pages/Booking";
+import 'antd/dist/antd.css';
+
 
 export default function App() {
   return (
