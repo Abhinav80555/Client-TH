@@ -1,0 +1,24 @@
+.App {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  text-align: center;
+}
+body {
+  background-color: azure;
+}
+.bs1 {
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+h1 {
+  font-size: 30px;
+  font-weight: bold;
+  color: orangered;
+}
+.header {
+  padding: 10px;
+}
+
+.content {
+  min-height: 90vh;
+}
