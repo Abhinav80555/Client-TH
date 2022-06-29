@@ -1,5 +1,5 @@
 import React, {useState,useEffect} from "react";
-import {Button,Row,Col,Divider,DatePicker} from "antd";
+import {Button,Row,Col,Divider,DatePicker,Modal} from "antd";
 import { useSelector,useDispatch } from "react-redux";
 import { DefaultLayout } from "../components/DefaultLayout";
 import {getAllProducts} from "../redux/action/RentalAction";
@@ -27,6 +27,7 @@ export function Booking({match}) {
   const [to , setTo] = useState()
   const [totalHours, setTotalHours] = useState(0)
   const [totalAmount,setTotalAmount]=useState(0);
+  const [showModal,setShowModal] =useState(false)
   
 
 
@@ -93,6 +94,8 @@ function bookNow(){
       showTime={{format: 'HH:mm'}} format="MMM-DD-YYYY HH:mm"
    onChange={selectTimeSlots}
     />
+              <br/>
+              <button className="btn1 mt-2" onClick={()=>{setShowModal(true)}} >See Booked Slots</button>
               {from && to && ( <div>
               <p>Total Hours : <b>{totalHours}</b></p>
               <p>Rent Per Hour : <b>{product.rentPerHour}</b> </p>
@@ -101,9 +104,27 @@ function bookNow(){
             </div>)}
             </div>
         </Col>
-      </Row>
-    
+        {product.name && (  
+      <Modal visible={showModal} closable={false} footer={false} title="Booked time slots">
+      <div className="p-2">
+        {product.bookedTimeSlots.map((slot)=>{
+      return(
+        <button className="btn1 mt-2">{slot.from}-{slot.to}</button>
+      );
+        })}
+        <div className="text-right mt-5" >
+        <button className="btn1" onClick={()=>{setShowModal(false)}}>Close</button>
+        </div>
       
+      </div>
+    
+    </Modal>
+      )}
+
+
+        
+      </Row>
+  
     </DefaultLayout>
   );
 }
