@@ -1,15 +1,22 @@
 import React from "react";
 import {Row,Col,Form,Input} from "antd";
 import {Link} from "react-router-dom";
+import {useDispatch,useSelector} from "react-redux";
+import {userLogin} from "../redux/action/userAction"
+import Spinner from "../components/Spinner";
+
 
 export function Login() {
-
-
+const dispatch = useDispatch()
+const {loading}=useSelector(state=>state.AlertsReducer)
   function onFinish(values){
+
+    dispatch(userLogin(values))
   console.log(values)
 }
   return (
     <div className="login">
+      {loading && (<Spinner/>)}
       
       <Row gutter={16} className="d-flex align-items-center">
         
