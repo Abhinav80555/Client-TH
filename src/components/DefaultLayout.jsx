@@ -19,7 +19,7 @@ const menu = (
       {
         key: '2',
         label: (
-          <Link to="userbookings">
+          <Link to="/userbookings">
             Bookings
           </Link>
         ),
@@ -27,8 +27,8 @@ const menu = (
       {
         key: '3',
         label: (
-          <Link to="https://www.luohanacademy.com">
-            Profile
+          <Link to="/admin">
+            Admin
           </Link>
         ),
       },

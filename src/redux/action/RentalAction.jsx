@@ -23,10 +23,30 @@ export const addProduct=(reqObj)=>async dispatch=>{
   dispatch({type:'LOADING', payload:true})
 
   try {
-    const response = await axios.post(`${API}/api/products/addproduct`,reqObj)
+    await axios.post(`${API}/api/products/addproduct`,reqObj)
   
     dispatch({type:'LOADING',payload:false})
     message.success('New Product Added Successfully')
+    setTimeout(()=>{
+      window.location.href="/"
+    },500);
+  } catch (error) {
+    console.log(error)
+    dispatch({type:'LOADING',payload:false})
+  }
+  
+}
+
+
+export const editProduct=(reqObj)=>async dispatch=>{
+
+  dispatch({type:'LOADING', payload:true})
+
+  try {
+    await axios.post(`${API}/api/products/editproduct`,reqObj)
+  
+    dispatch({type:'LOADING',payload:false})
+    message.success('product details updated Successfully')
     setTimeout(()=>{
       window.location.href="/"
     },500);

@@ -71,7 +71,7 @@ useEffect(()=>{
 
         <div>
         <p>{product.name}</p>
-        <p>{product.rentPerHour} Rent Per Hour /-</p>
+        <p>Rent= ₹{product.rentPerHour}/hr</p>
         </div>
 
         <div>

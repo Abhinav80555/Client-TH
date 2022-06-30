@@ -7,7 +7,7 @@ import {getAllProducts} from "../redux/action/RentalAction";
 import {Button,Row,Col,Divider,Modal} from "antd";
 import Spinner from "../components/Spinner";
 import moment from "moment";
-const {RangePicker}= DatePicker;
+
 export function Admin() {
   const { products } = useSelector((state) => state.RentalReducers);
   const {loading}= useSelector((state)=>state.AlertsReducer);
@@ -36,14 +36,13 @@ useEffect(()=>{
       <img src={product.image} className="productimg"/>
       <div className="product-content d-flex align-items-center justify-content-between">
 
-
         <div>
         <p>{product.name}</p>
-        <p>{product.rentPerHour} Rent Per Hour /-</p>
+        <p>Rent= ₹{product.rentPerHour}/hr</p>
         </div>
 
         <div className="admin">
-          <EditOutlined style={{color:"blue",cursor:"pointer"}}></EditOutlined>
+          <Link to={`/editproduct/${product._id}`}><EditOutlined style={{color:"blue",cursor:"pointer"}}></EditOutlined></Link>
           <DeleteOutlined className="m-3" style={{color:"red",cursor:"pointer"}}/>
         </div>
       
