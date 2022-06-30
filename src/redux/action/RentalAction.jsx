@@ -16,3 +16,22 @@ export const getAllProducts=()=>async dispatch=>{
   }
   
 }
+
+export const addProduct=()=>async dispatch=>{
+
+  dispatch({type:'LOADING', payload:true})
+
+  try {
+    const response = await axios.post(`${API}/api/products/addproduct`,reqObj)
+  
+    dispatch({type:'LOADING',payload:false})
+    message.success('New Product Added Successfully')
+    setTimeout(()=>{
+      window.location.href="/"
+    },500);
+  } catch (error) {
+    console.log(error)
+    dispatch({type:'LOADING',payload:false})
+  }
+  
+}
