@@ -110,7 +110,7 @@ else{
                    token={onToken}
                    currency='INR'
                    amount={totalAmount*100}
-                   stripeKey="pk_test_51LCG0gSFmd6Rsl6r0fQpoFvHlcExuOAWUDfOIgupF5D88nXZjJUkF10aarfKKUuTIkQ5iVc4k0v6IVYNr7phSoxh00NloShIy5" >
+                   stripeKey="pk_test_51IYnC0SIR2AbPxU0TMStZwFUoaDZle9yXVygpVIzg36LdpO8aSG8B9j2C0AikiQw2YyCI8n4faFYQI5uG3Nk5EGQ00lCfjXYvZ" >
                    <button className="btn1">Book Now</button>
                  </StripeCheckout>
               

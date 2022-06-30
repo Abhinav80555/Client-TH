@@ -3,7 +3,8 @@ import { Route, Routes ,Navigate, Outlet} from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
-import { Booking } from "./pages/Booking";
+import { Booking } from "./pages/Booking"
+import { UserBookings } from "./pages/UserBookings";
 import 'antd/dist/antd.css';
 
 
@@ -13,6 +14,7 @@ export default function App() {
       <Routes>
         <Route element={<ProtectedRoute/>}>
         <Route path="/" element={<Home />} />
+          <Route path="/userbookings" element={<UserBookings />} />
         <Route path="/booking/:productId" element={<Booking/>} />
           </Route>
         <Route path="/login" element={<Login />} />
