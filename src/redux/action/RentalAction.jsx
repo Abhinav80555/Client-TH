@@ -1,5 +1,6 @@
 import axios from "axios";
-import {API} from "./global"
+import {API} from "./global";
+import {message} from "antd";
 
 
 export const getAllProducts=()=>async dispatch=>{
@@ -17,7 +18,7 @@ export const getAllProducts=()=>async dispatch=>{
   
 }
 
-export const addProduct=()=>async dispatch=>{
+export const addProduct=(reqObj)=>async dispatch=>{
 
   dispatch({type:'LOADING', payload:true})
 

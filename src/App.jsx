@@ -6,6 +6,7 @@ import { Register } from "./pages/Register";
 import { Booking } from "./pages/Booking"
 import { AddProduct } from "./pages/AddProduct"
 import { UserBookings } from "./pages/UserBookings";
+import { Admin } from "./pages/Admin";
 import 'antd/dist/antd.css';
 
 
@@ -18,6 +19,7 @@ export default function App() {
           <Route path="/userbookings" element={<UserBookings />} />
         <Route path="/booking/:productId" element={<Booking/>} />
           <Route path="/addProduct" element={<AddProduct/>} />
+           <Route path="/admin" element={<Admin/>} />
           </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

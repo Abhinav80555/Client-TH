@@ -1,13 +1,14 @@
 import React, {useState,useEffect} from "react";
 import { useSelector,useDispatch } from "react-redux";
+import {DeleteOutlined,EditOutlined} from '@ant-design/icons';
 import {Link} from "react-router-dom";
 import { DefaultLayout } from "../components/DefaultLayout";
 import {getAllProducts} from "../redux/action/RentalAction";
-import {Button,Row,Col,Divider,DatePicker} from "antd";
+import {Button,Row,Col,Divider,Modal} from "antd";
 import Spinner from "../components/Spinner";
 import moment from "moment";
 const {RangePicker}= DatePicker;
-export function Home() {
+export function Admin() {
   const { products } = useSelector((state) => state.RentalReducers);
   const {loading}= useSelector((state)=>state.AlertsReducer);
   const [totalProducts,setTotalProducts] =useState([]);
@@ -22,43 +23,10 @@ useEffect(()=>{
   setTotalProducts(products)
 },[products])
 
-  function setFilter(values){
-   var selectedFrom= moment(values[0],'MMM-DD-YYYY HH:mm')
-    var selectedTo= moment(values[1],'MMM-DD-YYYY HH:mm')
-    var temp=[];
-
-    for (var product of products){
-      if (product.bookedTimeSlots.length ==0){
-        temp.push(product)
-      }else{
-        for(var booking of product.bookedTimeSlots){
-          if(selectedFrom.isBetween(booking.from,booking.to)||
-            selectedTo.isBetween(booking.from,booking.to)||
-            moment(booking.from).isBetween(selectedFrom,selectedTo)||
-            moment(booking.to).isBetween(selectedFrom,selectedTo)
-            ){
-            
-            }else{
-            temp.push(product)
-            }
-        }
-      }
-    }
-  setTotalProducts(temp)
-  }
-
-  
-
   
   return (
     <DefaultLayout>
-
-      <Row className="mt-3" justify="center">
-      <Col lg={20} sm={24} className="d-flex justify-content-left">
-      <RangePicker showTime={{format: 'HH:mm'}} format="MMM-DD-YYYY HH:mm"  onChange={setFilter}/>
-      </Col>
-      </Row>
-      
+  
       {loading == true && (<Spinner/>)}
       
     <Row justify="center" gutter={16} >
@@ -74,8 +42,9 @@ useEffect(()=>{
         <p>{product.rentPerHour} Rent Per Hour /-</p>
         </div>
 
-        <div>
-          <Link to={`/booking/${product._id}`}><button className="btn1 mr-2">Rent Now</button></Link>
+        <div className="admin">
+          <EditOutlined style={{color:"blue",cursor:"pointer"}}></EditOutlined>
+          <DeleteOutlined className="m-3" style={{color:"red",cursor:"pointer"}}/>
         </div>
       
       
