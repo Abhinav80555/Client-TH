@@ -6,8 +6,8 @@ import {getAllProducts} from "../redux/action/RentalAction";
 import {bookProduct} from "../redux/action/bookingAction";
 import Spinner from "../components/Spinner";
 import {useParams} from "react-router-dom";
+import StripeCheckout from "react-stripe-checkout";
 import moment from "moment";
-
 
 
 const {RangePicker} = DatePicker
@@ -56,8 +56,12 @@ else{
     setTotalHours(values[1].diff(values[0], 'hours'))
   }
 
-function bookNow(){
-  const reqObj ={
+
+
+    function onToken(token){
+    
+    const reqObj ={
+      token,
     user:JSON.parse(localStorage.getItem('user'))._id,
     product:product._id,
     totalHours,
@@ -67,8 +71,8 @@ function bookNow(){
       to
     }
   }
-  dispatch(bookProduct(reqObj))
-}
+  dispatch(bookProduct(reqObj))  
+    }
 
   
   return (
@@ -84,7 +88,7 @@ function bookNow(){
         <Divider style={{borderColor:"black"}} type='horizontal' dashed>Product info</Divider>
             <div style={{textAlign:'right'}}>
             <p>{product.name}</p>
-              <p>Rent Per Hour = {product.rentPerHour}/-</p>
+              <p>Rent Per Hour ={product.rentPerHour}/-</p>
               <p>Product Type = {product.Type}</p>
               <p>Lens = {product.lens}mm</p>
             </div>
@@ -100,7 +104,16 @@ function bookNow(){
               <p>Total Hours : <b>{totalHours}</b></p>
               <p>Rent Per Hour : <b>{product.rentPerHour}</b> </p>
               <h3>Total Amount= {totalAmount}</h3>
-              <button className="btn1" onClick={bookNow}>Book Now</button>
+
+                 <StripeCheckout
+                   shippingAddress
+                   token={onToken}
+                   currency='INR'
+                   amount={totalAmount*100}
+                   stripeKey="pk_test_51LCG0gSFmd6Rsl6r0fQpoFvHlcExuOAWUDfOIgupF5D88nXZjJUkF10aarfKKUuTIkQ5iVc4k0v6IVYNr7phSoxh00NloShIy5" >
+                   <button className="btn1">Book Now</button>
+                 </StripeCheckout>
+              
             </div>)}
             </div>
         </Col>
