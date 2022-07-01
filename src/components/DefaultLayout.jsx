@@ -59,6 +59,7 @@ const menu = (
           <h1 className="title"><Link to="/" >THIRD EYE RENTALS</Link></h1>
 <div className="nav">
           <Link to="/about">  About  </Link>
+  <Link to="/contact">  Contact  </Link>
         
 
            <Dropdown overlay={menu} placement="bottom">

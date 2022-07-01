@@ -9,7 +9,7 @@ import { EditProduct } from "./pages/EditProduct"
 import { UserBookings } from "./pages/UserBookings";
 import { Admin } from "./pages/Admin";
 import { About } from "./pages/About";
-
+import { Contact } from "./pages/Contact";
 import 'antd/dist/antd.css';
 
 
@@ -24,6 +24,7 @@ export default function App() {
           <Route path="/addProduct" element={<AddProduct/>} />
            <Route path="/admin" element={<Admin/>} /> 
           <Route path="/about" element={<About/>} />
+          <Route path="/contact" element={<Contact/>} />
           <Route path="/editproduct/:productId" element={<EditProduct/>} />
           </Route>
         <Route path="/login" element={<Login />} />
