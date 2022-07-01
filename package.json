@@ -33,5 +33,4 @@
     "styled-components": "^5.3.5",
     "vite": "^2.9.5"
   },
-  "proxy": "https://server.abhinav80555.repl.co/"
 }
