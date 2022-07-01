@@ -125,7 +125,8 @@ transform:translateY(-200px);
 }
 
 .productimg2{
-  height:400px;
+  height:350px;
+  object-fit:cover;
   border-radius:10px;
   object-fit:cover;
 }
