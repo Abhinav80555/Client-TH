@@ -57,10 +57,14 @@ const menu = (
           
         <div className="d-flex justify-content-between">
           <h1 className="title"><Link to="/" >THIRD EYE RENTALS</Link></h1>
+<div className="nav">
+          <Link to="/about">  About  </Link>
+        
 
            <Dropdown overlay={menu} placement="bottom">
         <Button>{user.username}</Button>
-      </Dropdown>
+      </Dropdown></div>
+         
           
         </div>
         

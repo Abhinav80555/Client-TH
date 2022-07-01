@@ -135,3 +135,8 @@ svg{
   height:20px !important;
   width:20px !important;
 }
+.nav{
+  gap:20px;
+  font-size:bold;
+  font-size:20px;
+}

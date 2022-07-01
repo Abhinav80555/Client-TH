@@ -11,6 +11,8 @@ export function Home() {
   const { products } = useSelector((state) => state.RentalReducers);
   const {loading}= useSelector((state)=>state.AlertsReducer);
   const [totalProducts,setTotalProducts] =useState([]);
+   const [duplicateproducts, setduplicateproducts] = useState();
+  const[type , settype]=useState('all')
   const dispatch=useDispatch()
 
 
@@ -21,6 +23,10 @@ useEffect(()=>{
   useEffect(()=>{
   setTotalProducts(products)
 },[products])
+
+  useEffect(()=>{
+    setduplicateproducts(products)
+  },[products])
 
   function setFilter(values){
    var selectedFrom= moment(values[0],'MMM-DD-YYYY HH:mm')
@@ -47,6 +53,17 @@ useEffect(()=>{
   setTotalProducts(temp)
   }
 
+          
+function filterByType(e){
+      settype(e)
+    if(e!=='all'){
+      const temp = duplicateproducts.filter(product=>product.Type.toLowerCase()===e.toLowerCase())
+      setTotalProducts(temp);
+    }
+    else{
+     setTotalProducts(duplicateproducts)
+    }
+}
   
 
   
@@ -55,7 +72,16 @@ useEffect(()=>{
 
       <Row className="mt-3" justify="center">
       <Col lg={20} sm={24} className="d-flex justify-content-left">
-      <RangePicker showTime={{format: 'HH:mm'}} format="MMM-DD-YYYY HH:mm"  onChange={setFilter}/>
+      <RangePicker className="btn1" showTime={{format: 'HH:mm'}} format="MMM-DD-YYYY HH:mm"  onChange={setFilter}/>
+      </Col>
+                  <Col>
+            <select className="form-control m-2 btn1" value={type} onChange={(e)=>{filterByType(e.target.value)}} >
+            <option value="all">👁‍🗨 All Products</option>
+            <option value="camera">camera</option>
+              <option value="lens">lens</option>
+              <option value="accessories">accessories</option>
+              
+            </select>
       </Col>
       </Row>
       
@@ -75,7 +101,7 @@ useEffect(()=>{
         </div>
 
         <div>
-          <Link to={`/booking/${product._id}`}><button className="btn1 mr-2">Rent Now</button></Link>
+          <Link to={`/booking/${product._id}`}><button className="btn1 mr-2">🛒Rent Now</button></Link>
         </div>
       
       

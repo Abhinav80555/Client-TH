@@ -8,6 +8,8 @@ import { AddProduct } from "./pages/AddProduct"
 import { EditProduct } from "./pages/EditProduct"
 import { UserBookings } from "./pages/UserBookings";
 import { Admin } from "./pages/Admin";
+import { About } from "./pages/About";
+
 import 'antd/dist/antd.css';
 
 
@@ -20,7 +22,8 @@ export default function App() {
           <Route path="/userbookings" element={<UserBookings />} />
         <Route path="/booking/:productId" element={<Booking/>} />
           <Route path="/addProduct" element={<AddProduct/>} />
-           <Route path="/admin" element={<Admin/>} />
+           <Route path="/admin" element={<Admin/>} /> 
+          <Route path="/about" element={<About/>} />
           <Route path="/editproduct/:productId" element={<EditProduct/>} />
           </Route>
         <Route path="/login" element={<Login />} />
