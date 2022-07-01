@@ -12,6 +12,7 @@ export function Home() {
   const {loading}= useSelector((state)=>state.AlertsReducer);
   const [totalProducts,setTotalProducts] =useState([]);
    const [duplicateproducts, setduplicateproducts] = useState();
+  const [searchkey, setsearchkey] = useState('')
   const[type , settype]=useState('all')
   const dispatch=useDispatch()
 
@@ -64,17 +65,42 @@ function filterByType(e){
      setTotalProducts(duplicateproducts)
     }
 }
+
+
+    function filterBySearch()
+  {
+    const temp = duplicateproducts.filter(product=>product.name.toLowerCase().includes(searchkey.toLowerCase()))
+    setTotalProducts(temp);
   
+  }
 
   
   return (
     <DefaultLayout>
 
       <Row className="mt-3" justify="center">
-      <Col lg={20} sm={24} className="d-flex justify-content-left">
+      <Col lg={8} sm={24} className="d-flex justify-content-left">
       <RangePicker className="btn1" showTime={{format: 'HH:mm'}} format="MMM-DD-YYYY HH:mm"  onChange={setFilter}/>
       </Col>
-                  <Col>
+
+<Col lg={8} sm={24}><div className="d-flex justify-content-center mt-2">
+            <input
+              type="text"
+              className="form-control btn1 pr-7"
+              placeholder='Search Product'
+              value={searchkey}
+              onKeyUp={filterBySearch}
+              onChange={(e)=>{setsearchkey(e.target.value)}}
+              
+            />
+          </div></Col>
+
+
+
+
+
+        
+                  <Col lg={5} sm={24}>
             <select className="form-control m-2 btn1" value={type} onChange={(e)=>{filterByType(e.target.value)}} >
             <option value="all">👁‍🗨 All Products</option>
             <option value="camera">camera</option>
