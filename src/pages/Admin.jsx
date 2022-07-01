@@ -3,8 +3,8 @@ import { useSelector,useDispatch } from "react-redux";
 import {DeleteOutlined,EditOutlined} from '@ant-design/icons';
 import {Link} from "react-router-dom";
 import { DefaultLayout } from "../components/DefaultLayout";
-import {getAllProducts} from "../redux/action/RentalAction";
-import {Button,Row,Col,Divider,Modal} from "antd";
+import {getAllProducts,deleteProduct} from "../redux/action/RentalAction";
+import {Button,Row,Col,Divider,Modal,message, Popconfirm} from "antd";
 import Spinner from "../components/Spinner";
 import moment from "moment";
 
@@ -26,6 +26,15 @@ useEffect(()=>{
   
   return (
     <DefaultLayout>
+
+      <Row justify="center" gutter={16} className="mt-2">
+      <Col lg={20} sm={24}>
+      <div className="d-flex justify-content-between align-items-center">
+        <h3 className='mt-2'><u>Admin Panel</u></h3>
+      <Link to="/addproduct"><buuton className="btn1">ADD PRODUCT</buuton></Link>
+      </div>
+      </Col>
+      </Row>
   
       {loading == true && (<Spinner/>)}
       
@@ -43,7 +52,20 @@ useEffect(()=>{
 
         <div className="admin">
           <Link to={`/editproduct/${product._id}`}><EditOutlined style={{color:"blue",cursor:"pointer"}}></EditOutlined></Link>
-          <DeleteOutlined className="m-3" style={{color:"red",cursor:"pointer"}}/>
+
+
+<Popconfirm
+    title="Are you sure to delete this Product?"
+    onConfirm={()=>{dispatch(deleteProduct({productId : product._id}))}}
+    okText="Yes"
+    cancelText="No"
+  >
+   <DeleteOutlined className="m-3" style={{color:"red",cursor:"pointer"}}/>
+  </Popconfirm>
+
+
+          
+          
         </div>
       
       

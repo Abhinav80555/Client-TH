@@ -80,8 +80,8 @@ else{
       {loading && (<Spinner/>)}
       
       <Row justify="center" className="d-flex align-items-center" style={{minHeight:"90vh"}}>
-        <Col lg={10} sm={24} xs={24}>
-        <img src={product.image} className="productimg2 bs1"/>
+        <Col lg={10} sm={24} xs={24} className='p-3'>
+        <img src={product.image} className="productimg2 bs1 w-100"/>
         </Col>
 
           <Col lg={10} sm={24} xs={24} className="text-right">

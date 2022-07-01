@@ -37,7 +37,7 @@ function onFinish(values){
 
   {loading && (<Spinner/>)}
 <Row justify="center mt-5">
-<Col lg={12} sm={24}>
+<Col lg={12} sm={24} xs={24} className='p-2'>
 
   {totalProducts.length>0 && (<Form initialValues={product} className="bs1 p-2" layout="vertical" onFinish={onFinish}>
   <h3>Edit Product</h3>

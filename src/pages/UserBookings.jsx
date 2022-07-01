@@ -43,7 +43,7 @@ return <Row gutter={16} justify="center" className="bs1 mt-3 text-left">
           <p>Date of Booking : <b>{moment(booking.createdAt).format('MMM DD YYYY')}</b></p>
         </Col>
         <Col lg={6} sm={24} className="text-right">
-        <img style={{borderRadius:5}} src={booking.product.image} height="140" width="180px" className="p-2"/>
+        <img style={{borderRadius:5}} src={booking.product.image} height="130" width="auto" className="p-1"/>
         </Col>
       </Row>
         })}

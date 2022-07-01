@@ -56,7 +56,7 @@ const menu = (
         <Col lg={20} sm={24} xs={24}>
           
         <div className="d-flex justify-content-between">
-          <h1><Link to="/" >THIRD EYE RENTALS</Link></h1>
+          <h1 className="title"><Link to="/" >THIRD EYE RENTALS</Link></h1>
 
            <Dropdown overlay={menu} placement="bottom">
         <Button>{user.username}</Button>

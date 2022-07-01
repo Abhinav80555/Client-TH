@@ -28,7 +28,7 @@ export const addProduct=(reqObj)=>async dispatch=>{
     dispatch({type:'LOADING',payload:false})
     message.success('New Product Added Successfully')
     setTimeout(()=>{
-      window.location.href="/"
+      window.location.href="/admin"
     },500);
   } catch (error) {
     console.log(error)
@@ -48,7 +48,28 @@ export const editProduct=(reqObj)=>async dispatch=>{
     dispatch({type:'LOADING',payload:false})
     message.success('product details updated Successfully')
     setTimeout(()=>{
-      window.location.href="/"
+      window.location.href="/admin"
+    },500);
+  } catch (error) {
+    console.log(error)
+    dispatch({type:'LOADING',payload:false})
+  }
+  
+}
+
+
+
+  export const deleteProduct=(reqObj)=>async dispatch=>{
+
+  dispatch({type:'LOADING', payload:true})
+
+  try {
+    await axios.post(`${API}/api/products/deleteproduct`,reqObj)
+  
+    dispatch({type:'LOADING',payload:false})
+    message.success('product deleted Successfully')
+    setTimeout(()=>{
+      window.location.reload()
     },500);
   } catch (error) {
     console.log(error)
