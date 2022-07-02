@@ -3,12 +3,7 @@
   "version": "1.0.0",
   "description": "ReactJS on Replit, using Vite bundler",
   "main": "index.js",
-  "engines": {
-    "node": "16.13.2",
-    "npm": "8.1.2"
-  },
   "scripts": {
-    "start": "node index.js",
     "build": "vite build",
     "dev": "vite"
   },
